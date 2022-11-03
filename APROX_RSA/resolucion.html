@@ -14604,7 +14604,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>DATOS Y PROBLEMA A ESTUDIO<h2>
+<h2>INTRODUCCIÓN<h2>
 
 </div>
 </div>
@@ -14616,8 +14616,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Para ilustrar el ejemplo se utiliza el data set: <a href="https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer">SURVEY LUNG CANCER</a> cuyas caracteristicas son: 
-Total no. of attributes:16
+<p>Para ilustrar el ejemplo se utiliza el dataset <a href="https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer">SURVEY LUNG CANCER</a>, cuyas características son:</p>
+<p>Total no. of attributes:16
 No .of instances:284
 Attribute information:</p>
 <pre><code>Gender: M(male), F(female)
@@ -14638,7 +14638,7 @@ Chest pain: YES=2 , NO=1.
 Lung Cancer: YES , NO.
 
 </code></pre>
-<p>El problema de estudio que utilizaremos como ejemplo de aplicación es un análisis sencillo, queremos contar cuántos casos de cáncer existen en función de si los individuos son fumadores o no.</p>
+<p>El problema que utilizaremos como ejemplo de aplicación es un análisis sencillo. Queremos contar cuántos casos de cáncer existen en función de si los individuos son fumadores o no.</p>
 
 </div>
 </div>
@@ -14674,7 +14674,7 @@ Lung Cancer: YES , NO.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>CIFRADO HOMOMORFICO<h2>
+<h2>CIFRADO HOMOMÓRFICO<h2>
 
 </div>
 </div>
@@ -14686,14 +14686,14 @@ Lung Cancer: YES , NO.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>El uso de un sistema de cifrado homomorfico está motivado por la obtención de un algoritmo de descifrazo que defina, para una clave privada, un homomorfismo de grupos entre el espacio del mensaje cifrado ($\mathcal{C}$) y el del mensaje sin cifrar ($\mathcal{M}$):</p>
-$$ f: \mathcal{C} \rightarrow \mathcal{M} $$<p>asi podremos enviar la información cifrada al servicio Cloud, tratarla estando cifrada y posteriormente traer al local las conclusiones para ser descifradas. Para una primera aproximación tomamos el sistema RSA simplificado.</p>
-<p>La clave publica es un par $(N,e)$ donde $N = p \cdot q$ es producto de dos primos $p$ y $q$ suficientemente grandes y distintos. Por otro lado, $e$ es el llamado exponente de cifrado que es un entero positivo tal que mcd $(e,\phi(N)) = 1$, donde $\phi(N) = (p-1)(q-1)$ es la función $\phi$ de Euler.</p>
-<p>La clave privada, es el par $(N,d)$ donde $d$ es el exponente de descifrado (i.e. el inverso de $e$ módulo $\phi(n)$). De este modo se verifica que</p>
+<p>El uso de un sistema de cifrado homomórfico está motivado por la obtención de un algoritmo de descifrazo que defina, para una clave privada, un homomorfismo de grupos entre el espacio del mensaje cifrado ($\mathcal{C}$) y el del mensaje sin cifrar ($\mathcal{M}$):</p>
+$$ f: \mathcal{C} \rightarrow \mathcal{M} $$<p>Así, podremos enviar la información cifrada al servicio Cloud, para tratarla encriptada y, posteriormente, traer al local las conclusiones para ser descifradas. Para una primera aproximación tomamos el sistema RSA simplificado.</p>
+<p>La clave pública es un par $(N,e)$ donde $N = p \cdot q$ es producto de dos primos $p$ y $q$ suficientemente grandes y distintos. Por otro lado, $e$ es el llamado exponente de cifrado que es un entero positivo tal que mcd $(e,\phi(N)) = 1$, donde $\phi(N) = (p-1)(q-1)$ es la función $\phi$ de Euler.</p>
+<p>La clave privada es el par $(N,d)$ donde $d$ es el exponente de descifrado (i.e. el inverso de $e$ módulo $\phi(n)$). De este modo se verifica que</p>
 $$ e \cdot d \equiv 1\, (mod\, (p-1)(q-1))$$<p>así</p>
 $$ \mathcal{M} = \mathcal{C} = (\mathbb{Z}_N)^* $$<p>que es el grupo multiplicativo de las unidades módulo n, cuyos elementos son</p>
 $$ m \in \mathbb{Z}: 1 \leq m &lt; N \wedge mcd\, (m,n) = 1 $$<p>quedando el homomorfismo de grupos</p>
-$$ E: (\mathbb{Z}_N)^* \longrightarrow (\mathbb{Z}_N)^* $$$$ m \mapsto m^e\, mod \, N $$<p>que es un isomorfismo, que permite descifrar un mensaje cifrado $c$ através de su inverso:</p>
+$$ E: (\mathbb{Z}_N)^* \longrightarrow (\mathbb{Z}_N)^* $$$$ m \mapsto m^e\, mod \, N $$<p>que es un isomorfismo, que permite descifrar un mensaje cifrado $c$ através de su inverso</p>
 $$D(c) = c^d \, mod \, N$$<p>La utilidad de esto radica en que $((\mathbb{Z}_N)^*,\; \cdot)$ es un grupo multiplicativo, por tanto</p>
 $$ \begin{equation} \tag{h}
 E(m_1 \cdot m_2) = E(m_1) \cdot E(m_2)
@@ -14709,7 +14709,7 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>APLICACIÓN AL DATASET DEL CANCER DE PULMÓN<h2>
+<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN<h2>
 
 </div>
 </div>
@@ -14721,12 +14721,12 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>En primer lugar vamos a definir dos funciones, una para encriptar un tipo int y otra para desencriptarlo. Los parámetros de entrada para la función que encripta serán</p>
+<p>En primer lugar vamos a definir dos funciones, una para encriptar un tipo int y otra para desencriptarlo. Los parámetros de entrada para la función que encripta serán:</p>
 <ul>
 <li>publicKey -> Lista que contiene: N, e </li>
 <li>mensaje -> int </li>
 </ul>
-mientras que para la función que desencipta tendremos
+mientras que para la función que desencipta tendremos:
 <ul>
 <li>privateKey -> Lista que contiene: N, d </li>
 <li>criptotexto -> int </li>
@@ -14767,7 +14767,7 @@ mientras que para la función que desencipta tendremos
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Suponemos ahora que tenemos cifrada la columna <em>SMOKING</em> del dataset. Una primera opción que se ha trabajado es exportar el csv a un data frame, pero el tipo int64 con el que trabaja pandas colisiona con el uso del método <em>pow</em>. De momento optaré por una solución más rudimentaria para encriptar la columna y poder ilustrar este ejemplo.</p>
+<p>Suponemos ahora que tenemos cifrada la columna <em>SMOKING</em> del dataset. Una primera opción que se ha trabajado es exportar el csv a un data frame, pero el tipo int64 con el que trabaja pandas colisiona con el uso del método <em>pow</em>. De momento, optaré por una solución más rudimentaria para encriptar la columna y poder ilustrar este ejemplo.</p>
 
 </div>
 </div>
@@ -14802,7 +14802,7 @@ mientras que para la función que desencipta tendremos
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>De esta forma hemos creado la columna <em>fumar</em> que contiene los enteros 1 si la persona no era fumadora y 2 si la persona era fumadora. Ambas entrada de tipo int. De modo que ya podemos encriptar secuencialmente la columna.</p>
+<p>De esta forma, hemos creado la columna <em>fumar</em> que contiene los enteros 1 si la persona no era fumadora y 2 si la persona era fumadora. Ambas entradas de tipo int. De modo que ya podemos encriptar secuencialmente la columna.</p>
 <p>Para ello definimos los valores que gobiernan el ejemplo:</p>
 
 </div>
@@ -14869,7 +14869,7 @@ mientras que para la función que desencipta tendremos
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Ahora vamos hacer el cálculo pedido: encontrar cuántos pacientes de cancer de pulmón eran fumadores y cuántos no. En primer lugar, las entradas del dataset son el 1 y un número primero. Por el teorema fundamental de la aritmética sabemos que todo entero positivo mayor que 1 es un número primo o bien un único producto de números primos. De modo que el número de pacientes fumadores se puede obtener facilmente, ya que conocemos los factores involucrados en la descomposición del producto de todos los elementos de la columna <em>fumar_encrip</em> por lo que sólo debemos conocer sus exponentes para extraer la información pedida.</p>
+<p>Ahora vamos hacer el cálculo pedido: encontrar cuántos pacientes de cáncer de pulmón eran fumadores y cuántos no. En primer lugar, las entradas del dataset son el 1 y un número primo. Por el teorema fundamental de la aritmética sabemos que todo entero positivo mayor que 1 es un número primo o bien un único producto de números primos. De modo que el número de pacientes fumadores se puede obtener fácilmente, ya que conocemos los factores involucrados en la descomposición del producto de todos los elementos de la columna <em>fumar_encrip</em>. Sólo nos falta por conocer sus exponentes para extraer la información pedida.</p>
 <p>Calculamos el productorio módulo n de <em>fumar_encrip</em></p>
 
 </div>
@@ -14923,8 +14923,8 @@ mientras que para la función que desencipta tendremos
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Esta operación con los datos encriptados se habría hecho en la estructura del proveedor cloud y exportariamos al local, unicamente, la variable <em>producto</em>.</p>
-<p>Una vez en local, el usuario conoceria la clave privada por lo que podría desencriptarlo y <em>factorizarlo</em> para extraer la información buscada gracias a (h).</p>
+<p>Esta operación con los datos encriptados se habría hecho en la estructura del proveedor cloud y exportaríamos al local, únicamente, la variable <em>producto</em>.</p>
+<p>Una vez en local, el usuario conocería la clave privada por lo que podría desencriptarlo y <em>factorizarlo</em> para extraer la información buscada gracias a (h).</p>
 <p>En este caso, por ser una de las entradas un 1, el único primo es 2, por lo que buscamos su exponente y mediante la diferencia respecto al total obtenemos el número de pacientes no fumadores. La función que factorizará <em>producto</em> simplemente eleva iterativamente 2, una unidad más en cada paso, hasta obtener el valor de la variable <em>producto</em>.</p>
 
 </div>
@@ -15014,8 +15014,8 @@ De un total de 309 pacientes.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>El proceso que se acaba de describir es inútil desde el punto de vista de la seguridad. Al ser un proceso determinista, es decir, los pacientes fumadores y no fumadores se cifran siempre de la misma manera, no podemos presuponer que alguien que quiera hacer un uso fraudulento de la información desconozca los elementos de $(\mathbb{Z}_n)^*$ que se han utilizado para representar las condiciones de ser o no fumador (<em>principio de Kerckhoffs</em>).</p>
-<p>Esto se puede traducir en que, en el peor caso, con un par evaluaciones obtenemos si un paciente es o no fumador:</p>
+<p>El proceso que se acaba de describir es inútil desde el punto de vista de la seguridad. Al ser un proceso determinista, es decir, los pacientes fumadores y no fumadores se cifran siempre de la misma manera, no podemos presuponer que alguien que quiera hacer un uso fraudulento de la información desconoce los elementos involucrados en el algoritmo (<em>principio de Kerckhoffs</em>).</p>
+<p>Esto se puede traducir en que, en el peor caso, con un par de evaluaciones obtenemos si un paciente es o no fumador:</p>
 
 </div>
 </div>
@@ -15071,7 +15071,8 @@ Representa: No es fumador
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>La probabiliad de distinguir al fumador del no fumador es 1. El objetivo sería no ser capaces de acertar con probabilidad significativamente mayor que $\dfrac{1}{2}$. La definición asintótica de la probabiliad insignificante supone que, si alguién que intenta distinguir los mensajes, lo hace con probabiliad $\dfrac{1}{2}+\dfrac{1}{f(k)}$, donde $k$ es la longitud del módulo RSA y $f(k)$ una función polinómica, entonces el algoritmo no es seguro.</p>
+<p>La probabiliad de distinguir al fumador del no fumador es 1. El objetivo sería no ser capaces de acertar con probabilidad significativamente mayor que $\dfrac{1}{2}$.</p>
+<p>La definición asintótica de la probabilidad insignificante supone que, si alguien intenta distinguir los mensajes lo hace con probabiliad $\dfrac{1}{2}+\dfrac{1}{f(k)}$, donde $k$ es la longitud del módulo RSA y $f(k)$ una función polinómica, entonces el algoritmo no es seguro.</p>
 
 </div>
 </div>
@@ -15095,7 +15096,7 @@ Representa: No es fumador
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Un algoritmo de cifrado que es homomórfico y CPA seguro (se dice que un procedimiento es CPA seguro si en tiempo polinómico un atacante no puede distinguir entre dos criptotextos partiendo de dos textos sin cifrar elegidos por él) es el de Paillier.</p>
+<p>Un algoritmo de cifrado que es homomórfico y CPA seguro es el de Paillier. Se dice que un procedimiento es CPA seguro si en tiempo polinómico un atacante no puede distinguir entre dos criptotextos partiendo de dos textos sin cifrar elegidos por él.</p>
 
 </div>
 </div>
@@ -15109,8 +15110,8 @@ Representa: No es fumador
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Las fases que gobiernan el algoritmo de Paillier son tres, a saber:</p>
 <ul>
-<li><strong>Generar las claves</strong>. Se generan dos primos aleatorios $p$ y $q$ y se obtiene la clave pública $n=pq$ y la clave privada $(n, \phi(n))$. Por simplicidad supondremos que $p$ y $q$ tienen la misma longitud.</li>
-<li><strong>Cifrar</strong>. El conjunto de textos sin cifrar será $\mathbb{Z}_n$ y el de ciptotextos $(\mathbb{Z}_{n^2})^*$. Para cifrar un mensaje $m \in \mathbb{Z}_n$, se elige $r \in (\mathbb{Z}_{n^2})^*$ al <em>azar</em> y se calcula el criptotexto como</li>
+<li><strong>Generar las claves</strong>. Se generan dos primos aleatorios $p$ y $q$ y se obtiene la clave pública $n=pq$ y la clave privada $(n, \phi(n))$. Por simplicidad, supondremos que $p$ y $q$ tienen la misma longitud.</li>
+<li><strong>Cifrar</strong>. El conjunto de textos sin cifrar será $\mathbb{Z}_n$ y el de criptotextos $(\mathbb{Z}_{n^2})^*$. Para cifrar un mensaje $m \in \mathbb{Z}_n$, se elige $r \in (\mathbb{Z}_{n^2})^*$ al <em>azar</em> y se calcula el criptotexto como</li>
 </ul>
 $$c = E(n, m) := ((1+n)^m \cdot r^n)\, mod \, n^2 \in (\mathbb{Z}_{n^2})^* \tag{Encriptación con Paillier} $$<ul>
 <li><strong>Descifrar</strong>. Para descrifrar $c$ con la clave privada $(n, \phi(n))$ se hace $$m = D((n, \phi(n)), c) := \dfrac{(c^{\phi(n)}\, mod\, n^2)-1}{n} \cdot \phi(n)^{-1} \, mod \, n \tag{Desencriptación con Paillier} $$ donde $((c^{\phi(n)}\, mod\, n^2)-1)/n$ se calcula en $\mathbb{Z}$.</li>
@@ -15128,7 +15129,7 @@ $$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \ta
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>APLICACIÓN AL DATASET DEL CANCER DE PULMÓN<h2>
+<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN<h2>
 
 </div>
 </div>
@@ -15140,7 +15141,7 @@ $$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \ta
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Importamos la función $ \texttt{getprimeover(N)} $ la cual retorna un primo de N-bits usando GMP o, si no está accesible, PyCrypto; que son librerias criptográficas de Python. Además importamos $ \texttt{random} $ para hallar $r \in (\mathbb{Z}_{n^2})^* $</p>
+<p>Importamos la función $ \texttt{getprimeover(N)} $ la cual retorna un primo de N-bits usando GMP o, si no está accesible, PyCrypto; que son librerías criptográficas de Python. Además, importamos $ \texttt{random} $ para hallar $r \in (\mathbb{Z}_{n^2})^* $</p>
 
 </div>
 </div>
@@ -15169,7 +15170,7 @@ $$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \ta
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Generamos las claves pública y privada suponiendo que la longitud de N es de 1024. Generalmente se usan longitudes de 3072 (como hace la libreria $ \texttt{Paillier} $ de $ \texttt{phe} $)</p>
+<p>Generamos las claves pública y privada suponiendo que la longitud de N es de 1024. Generalmente se usan longitudes de 3072 (como hace la librería $ \texttt{Paillier} $ de $ \texttt{phe} $)</p>
 
 </div>
 </div>
@@ -15211,7 +15212,7 @@ $$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \ta
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Implementamos un procedimiento para encriptar, según lo visto en (Encriptación con Paillier), y un procedimiento para desencriptar según lo visto en (Desencriptación con Paillier)</p>
+<p>Implementamos un procedimiento para encriptar, según lo visto en (Encriptación con Paillier), y un procedimiento para desencriptar, según lo visto en (Desencriptación con Paillier)</p>
 
 </div>
 </div>
@@ -15486,7 +15487,7 @@ n**2: 617
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Este valor lo traeriamos al local dentro nuestra empresa. Ahora, sabemos que para descrifrarlo es un homomorfismo según la propiedad descrita en (Propiedad homomórfica), la función de descifrado obtendrá
+<p>Este valor lo traeríamos al local dentro nuestra empresa. Ahora, sabemos que para descrifrarlo es un homomorfismo según la propiedad descrita en (Propiedad homomórfica), la función de descifrado obtendrá
 $$  \sum_{i=0}^l m_i \, mod \, n  $$</p>
 
 </div>
@@ -15551,7 +15552,7 @@ $$  \sum_{i=0}^l m_i \, mod \, n  $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Dado que las entradas elegidas para representar el <em>si</em> y el <em>no</em> son 2 y 1, este camino no sirve pues no sería posible (al ser una suma) descomponerla y obtener la información deseada. El valor obtenido 483, es coherente con la solución obtenida con RSA, la cual decía:</p>
+<p>Dado que las entradas elegidas para representar el <em>si</em> y el <em>no</em> son 2 y 1, este camino no sirve pues no sería posible. Al ser una suma, descomponerla y obtener la información deseada no es viable. El valor obtenido 483, es coherente con la solución obtenida con RSA, la cual decía:</p>
 $$ \texttt{El total de pacientes fumadores es: 174.} $$<p>$$ \texttt{El total de pacientes no fumadores es: 135.} $$</p>
 <p>es decir,</p>
 $$ 172 \cdot 2 + 135 \cdot  1 = 483 $$<p>como hemos obtenido. El sistema funciona como se esperaba.</p>
@@ -15645,7 +15646,7 @@ $$ 172 \cdot 2 + 135 \cdot  1 = 483 $$<p>como hemos obtenido. El sistema funcion
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Podría parecer que hemos resuelto el problema. Pero nada mas lejos de la realidad. Hemos impuesto que nuestro sistema de cifrado además de homórfico sea CPA seguro. Pero se conocen formas de atacar a estos sistemas permitiendo conocer, en nuestro caso de ejemplo, si un paciente en concreto es o no fumador. Este tipo de ataques se conocen como ataques CCA. Como en el caso CPA se elegiran dos mensajes y uno de ellos (al azar) se cifrado y el criptotexto se entregado al atacante, el cual intenta descifrar a cual corresponde. Además, el atacante puede adaptar el ataque según las respuesta que obtenga. Veamos que ocurre con nuestro ejemplo.</p>
+<p>Podría parecer que hemos resuelto el problema. Pero nada más lejos de la realidad. Hemos impuesto que nuestro sistema de cifrado, además de homórfico, sea CPA seguro. Pero se conocen formas de atacar a estos sistemas permitiendo conocer, en nuestro caso, si un paciente en concreto es o no fumador. Este tipo de ataques se conocen como ataques CCA. Como en el caso CPA se elegirán dos mensajes, y uno de ellos (al azar) es cifrado, y el criptotexto es entregado al atacante que intenta descifrar a cuál corresponde. Además, el atacante puede adaptar el ataque según las respuesta que obtenga. Veamos que ocurre con nuestro ejemplo:</p>
 
 </div>
 </div>
@@ -15710,7 +15711,7 @@ $$ 172 \cdot 2 + 135 \cdot  1 = 483 $$<p>como hemos obtenido. El sistema funcion
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>El atacante, puede utilizar la propiedad homomórfica. Sea c el primer elemento de $ \texttt{fumar\_encrip\_P} $</p>
-$$ \texttt{c1} := (\texttt{uno} \cdot \texttt{c}) \, mod \, n^2 $$<p>y además sabe que</p>
+$$ \texttt{c1} := (\texttt{uno} \cdot \texttt{c}) \, mod \, n^2 $$<p>y además, sabe que</p>
 $$ \texttt{D\_PAI(private\_key\_p, uno) = 1} $$
 </div>
 </div>
@@ -15786,7 +15787,7 @@ $$ \texttt{D\_PAI(private\_key\_p, uno) = 1} $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Un atacante puede modificar el criptotexto del ataque y obtener otro criptotexto relacionado de forma que su texto claro esté relacionado con el texto claro que se quiere descifrar.</p>
+<p>Por tanto decimos que el método de Paillier es maleable. Un atacante puede modificar el criptotexto del ataque y obtener otro criptotexto relacionado de forma que su texto claro esté relacionado con el texto claro que se quiere descifrar.</p>
 
 </div>
 </div>
@@ -15798,7 +15799,7 @@ $$ \texttt{D\_PAI(private\_key\_p, uno) = 1} $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3>BIBLIOGRAFIA<h3>
+<h3>BIBLIOGRAFÍA<h3>
 
 </div>
 </div>
