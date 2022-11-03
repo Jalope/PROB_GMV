@@ -14695,7 +14695,10 @@ $$ \mathcal{M} = \mathcal{C} = (\mathbb{Z}_N)^* $$<p>que es el grupo multiplicat
 $$ m \in \mathbb{Z}: 1 \leq m &lt; N \wedge mcd\, (m,n) = 1 $$<p>quedando el homomorfismo de grupos</p>
 $$ E: (\mathbb{Z}_N)^* \longrightarrow (\mathbb{Z}_N)^* $$$$ m \mapsto m^e\, mod \, N $$<p>que es un isomorfismo, que permite descifrar un mensaje cifrado $c$ através de su inverso:</p>
 $$D(c) = c^d \, mod \, N$$<p>La utilidad de esto radica en que $((\mathbb{Z}_N)^*,\; \cdot)$ es un grupo multiplicativo, por tanto</p>
-$$E(m_1 \cdot m_2) = E(m_1) \cdot E(m_2)$$
+$$ \begin{equation} \tag{h}
+E(m_1 \cdot m_2) = E(m_1) \cdot E(m_2)
+\end{equation} 
+$$
 </div>
 </div>
 </div>
@@ -14867,7 +14870,7 @@ mientras que para la función que desencipta tendremos
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Ahora vamos hacer el cálculo pedido: encontrar cuántos pacientes de cancer de pulmón eran fumadores y cuántos no. En primer lugar, las entradas del dataset son el 1 y un número primero. Por el teorema fundamental de la aritmética sabemos que todo entero positivo mayor que 1 es un número primo o bien un único producto de números primos. De modo que el número de pacientes fumadores se puede obtener facilmente, ya que conocemos los factores involucrados en la descomposición del producto de todos los elementos de la columna <em>fumar_encrip</em> por lo que sólo debemos conocer sus exponentes para extraer la información pedida.</p>
-<p>Calculamos el productorio módulo n de la <em>fumar_encrip</em></p>
+<p>Calculamos el productorio módulo n de <em>fumar_encrip</em></p>
 
 </div>
 </div>
@@ -14921,7 +14924,7 @@ mientras que para la función que desencipta tendremos
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Esta operación con los datos encriptados se habría hecho en la estructura del proveedor cloud y exportariamos al local, unicamente, la variable <em>producto</em>.</p>
-<p>Una vez en local, el usuario conoceria la clave privada por lo que podría desencriptarlo y <em>factorizarlo</em> para extraer la información buscada.</p>
+<p>Una vez en local, el usuario conoceria la clave privada por lo que podría desencriptarlo y <em>factorizarlo</em> para extraer la información buscada gracias a (h).</p>
 <p>En este caso, por ser una de las entradas un 1, el único primo es 2, por lo que buscamos su exponente y mediante la diferencia respecto al total obtenemos el número de pacientes no fumadores. La función que factorizará <em>producto</em> simplemente eleva iterativamente 2, una unidad más en cada paso, hasta obtener el valor de la variable <em>producto</em>.</p>
 
 </div>
@@ -14992,6 +14995,778 @@ De un total de 309 pacientes.
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>LIMITACIONES<h3>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>El proceso que se acaba de describir es inútil desde el punto de vista de la seguridad. Al ser un proceso determinista, es decir, los pacientes fumadores y no fumadores se cifran siempre de la misma manera, no podemos presuponer que alguien que quiera hacer un uso fraudulento de la información desconozca los elementos de $(\mathbb{Z}_n)^*$ que se han utilizado para representar las condiciones de ser o no fumador (<em>principio de Kerckhoffs</em>).</p>
+<p>Esto se puede traducir en que, en el peor caso, con un par evaluaciones obtenemos si un paciente es o no fumador:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">valor</span> <span class="o">=</span> <span class="n">E_RSA</span><span class="p">(</span><span class="n">pubKey</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Buscamos la representación de 1'</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">E_RSA</span><span class="p">(</span><span class="n">pubKey</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="n">E_RSA</span><span class="p">(</span><span class="n">pubKey</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">valor</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Representa: Es fumador"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Representa: No es fumador"</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Buscamos la representación de 1
+Representa: No es fumador
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>La probabiliad de distinguir al fumador del no fumador es 1. El objetivo sería no ser capaces de acertar con probabilidad significativamente mayor que $\dfrac{1}{2}$. La definición asintótica de la probabiliad insignificante supone que, si alguién que intenta distinguir los mensajes, lo hace con probabiliad $\dfrac{1}{2}+\dfrac{1}{f(k)}$, donde $k$ es la longitud del módulo RSA y $f(k)$ una función polinómica, entonces el algoritmo no es seguro.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1>MEJORANDO EL SISTEMA<h1>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Un algoritmo de cifrado que es homomórfico y CPA seguro (se dice que un procedimiento es CPA seguro si en tiempo polinómico un atacante no puede distinguir entre dos criptotextos partiendo de dos textos sin cifrar elegidos por él) es el de Paillier.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Las fases que gobiernan el algoritmo de Paillier son tres, a saber:</p>
+<ul>
+<li><strong>Generar las claves</strong>. Se generan dos primos aleatorios $p$ y $q$ y se obtiene la clave pública $n=pq$ y la clave privada $(n, \phi(n))$. Por simplicidad supondremos que $p$ y $q$ tienen la misma longitud.</li>
+<li><strong>Cifrar</strong>. El conjunto de textos sin cifrar será $\mathbb{Z}_n$ y el de ciptotextos $(\mathbb{Z}_{n^2})^*$. Para cifrar un mensaje $m \in \mathbb{Z}_n$, se elige $r \in (\mathbb{Z}_{n^2})^*$ al <em>azar</em> y se calcula el criptotexto como</li>
+</ul>
+$$c = E(n, m) := ((1+n)^m \cdot r^n)\, mod \, n^2 \in (\mathbb{Z}_{n^2})^* \tag{Encriptación con Paillier} $$<ul>
+<li><strong>Descifrar</strong>. Para descrifrar $c$ con la clave privada $(n, \phi(n))$ se hace $$m = D((n, \phi(n)), c) := \dfrac{(c^{\phi(n)}\, mod\, n^2)-1}{n} \cdot \phi(n)^{-1} \, mod \, n \tag{Desencriptación con Paillier} $$ donde $((c^{\phi(n)}\, mod\, n^2)-1)/n$ se calcula en $\mathbb{Z}$.</li>
+</ul>
+<p>Ahora bien, $\mathbb{Z}_n$ es aditivo, y $(\mathbb{Z}_{n^2})^*$ multiplicativo, por lo que la función de descifrado de Paillier lleva un producto de criptotextos en $(\mathbb{Z}_{n^2})^*$ a la suma de los textos sin cifrar en $\mathbb{Z}_{n}$. Sean $m_1$ y $m_2 \in \mathbb{Z}_n$, entonces $c_1 = E(n, m_1)$ y $c_2 = E(n, m_2)$ de donde</p>
+$$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \tag{Propiedad homomórfica} $$<p>La aplicación $D: (\mathbb{Z}_{n^2})^* \rightarrow \mathbb{Z}_{n}$ inducida por el algoritmo de descifrado con una clave fija es un homomorfismo de grupos (no se puede afirmar lo mismo del de cifrado por ser probabilista). No obstante, es cierto que para cifrar la suma de varios mensajes se puede tomar como criptotexto el productorio de los criptotextos asociados a cada mensaje.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>APLICACIÓN AL DATASET DEL CANCER DE PULMÓN<h2>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Importamos la función $ \texttt{getprimeover(N)} $ la cual retorna un primo de N-bits usando GMP o, si no está accesible, PyCrypto; que son librerias criptográficas de Python. Además importamos $ \texttt{random} $ para hallar $r \in (\mathbb{Z}_{n^2})^* $</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">phe.util</span> <span class="kn">import</span> <span class="n">getprimeover</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Generamos las claves pública y privada suponiendo que la longitud de N es de 1024. Generalmente se usan longitudes de 3072 (como hace la libreria $ \texttt{Paillier} $ de $ \texttt{phe} $)</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N_LEN</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">q</span> <span class="o">=</span> <span class="n">n</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">n_len</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n_len</span> <span class="o">!=</span> <span class="n">N_LEN</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">getprimeover</span><span class="p">(</span><span class="n">N_LEN</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">while</span> <span class="n">q</span> <span class="o">==</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">getprimeover</span><span class="p">(</span><span class="n">N_LEN</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+    <span class="n">n_len</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+
+<span class="n">phi_n_P</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">public_key_P</span> <span class="o">=</span> <span class="n">n</span> 
+<span class="n">private_key_P</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">phi_n_P</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Implementamos un procedimiento para encriptar, según lo visto en (Encriptación con Paillier), y un procedimiento para desencriptar según lo visto en (Desencriptación con Paillier)</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">E_PAI</span><span class="p">(</span><span class="n">publicKey</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">):</span> 
+    <span class="n">r</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> 
+    <span class="n">nc</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="nb">pow</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">),</span> <span class="n">mensaje</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">D_PAI</span><span class="p">(</span><span class="n">privateKey</span><span class="p">,</span> <span class="n">criptotexto</span><span class="p">):</span> 
+    <span class="n">n</span> <span class="o">=</span> <span class="n">privateKey</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">privateKey</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">nc</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">numerador</span> <span class="o">=</span> <span class="p">((</span><span class="nb">pow</span><span class="p">(</span><span class="n">criptotexto</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+    <span class="n">denominador</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">numerador</span> <span class="o">*</span> <span class="n">denominador</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>PRUEBA BORRAR EN EL DEFINITIVO ----------------------</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">si</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">si_2</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">no</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">si</span> <span class="o">==</span> <span class="n">si_2</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dsi</span> <span class="o">=</span> <span class="n">D_PAI</span><span class="p">(</span><span class="n">private_key_P</span><span class="p">,</span> <span class="n">si</span><span class="p">)</span>
+<span class="n">dsi_2</span> <span class="o">=</span> <span class="n">D_PAI</span><span class="p">(</span><span class="n">private_key_P</span><span class="p">,</span> <span class="n">si_2</span><span class="p">)</span>
+<span class="n">dno</span> <span class="o">=</span> <span class="n">D_PAI</span><span class="p">(</span><span class="n">private_key_P</span><span class="p">,</span> <span class="n">no</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'si: </span><span class="si">{</span><span class="n">dsi</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">si_2: </span><span class="si">{</span><span class="n">dsi_2</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">no: </span><span class="si">{</span><span class="n">dno</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>si: 2 
+si_2: 2 
+no: 1
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>FIN DE PRUEBA --------------------------</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Encriptamos la columna SMOKING del dataset</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fumar_encrip_P</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="n">fumar</span><span class="p">:</span> 
+    <span class="n">fumar_encrip_P</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="n">elemento</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Calculamos 
+$$ \texttt{producto\_p} = \prod_{i=0}^{i = l} c_i \, mod \, n^2 $$
+donde l es la longitud de la lista <em>fumar_encrip_P</em></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">producto_P</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="n">fumar_encrip_P</span><span class="p">:</span>
+    <span class="n">producto_P</span> <span class="o">=</span> <span class="p">(</span><span class="n">producto_P</span> <span class="o">*</span> <span class="n">elemento</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>observamos que el elemento resultante está en $ (\mathbb{Z}_{n^2})^* $</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'producto: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">producto_P</span><span class="p">))</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">n**2: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>producto: 617 
+n**2: 617
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Este valor lo traeriamos al local dentro nuestra empresa. Ahora, sabemos que para descrifrarlo es un homomorfismo según la propiedad descrita en (Propiedad homomórfica), la función de descifrado obtendrá
+$$  \sum_{i=0}^l m_i \, mod \, n  $$</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>dicho numero debe representar la suma de pacientes fumadores y no fumadores de la columna SMOKING del dataset</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cyf</span> <span class="o">=</span> <span class="n">D_PAI</span><span class="p">(</span><span class="n">private_key_P</span><span class="p">,</span> <span class="n">producto_P</span><span class="p">)</span>
+<span class="n">cyf</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>483</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Dado que las entradas elegidas para representar el <em>si</em> y el <em>no</em> son 2 y 1, este camino no sirve pues no sería posible (al ser una suma) descomponerla y obtener la información deseada. El valor obtenido 483, es coherente con la solución obtenida con RSA, la cual decía:</p>
+$$ \texttt{El total de pacientes fumadores es: 174.} $$<p>$$ \texttt{El total de pacientes no fumadores es: 135.} $$</p>
+<p>es decir,</p>
+$$ 172 \cdot 2 + 135 \cdot  1 = 483 $$<p>como hemos obtenido. El sistema funciona como se esperaba.</p>
+<p>No obstante, para poder usar este método de forma eficaz, necesitamos que las entradas sean, por ejemplo, 0 y 1, de forma que la suma obtenida ya representaría el total de una de las dos opciones, siendo la otra la diferencia respecto del total de casos estudiados.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2> SEGURIDAD <h2>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Si reproducimos el ataque que hicimos para RSA encontramos una diferencia sustancial: <strong>dos textos claros no siempre tienen el mismo criptotexto</strong>. En efecto:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dos</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">otro_dos</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">dos</span> <span class="o">==</span> <span class="n">otro_dos</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>LIMITACIONES<h2>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Podría parecer que hemos resuelto el problema. Pero nada mas lejos de la realidad. Hemos impuesto que nuestro sistema de cifrado además de homórfico sea CPA seguro. Pero se conocen formas de atacar a estos sistemas permitiendo conocer, en nuestro caso de ejemplo, si un paciente en concreto es o no fumador. Este tipo de ataques se conocen como ataques CCA. Como en el caso CPA se elegiran dos mensajes y uno de ellos (al azar) se cifrado y el criptotexto se entregado al atacante, el cual intenta descifrar a cual corresponde. Además, el atacante puede adaptar el ataque según las respuesta que obtenga. Veamos que ocurre con nuestro ejemplo.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>En primer lugar ciframos el 1</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uno</span> <span class="o">=</span> <span class="n">E_PAI</span><span class="p">(</span><span class="n">public_key_P</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">uno</span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>1614862311117929082007096343991289905453215658350899400051431243623380632352873754730478117442087443905557777906314556011935126745412287906763452509006568908455877798199535526666768387095439877562563960572327693104870843166304173238746775726899929633699391876043988171630093688890983715592446447501948369367056433143340360071576040105757680304920019972050151190091920046652869687687511458147341120594196303165304607954139588100947632730397759988528157723236023219911589379948035805451220493726584005318866606373622491270365078916511381565984372339975781817974777810340287202959199496775808719224079720063494197507957399532684682350429209408602934583030879905508152918943613749100470827904056248772861682560014617616775542373253480021543363227449950811083505255545750677462440454716568518739987406672633560393294217160430062442441282589023978753455031066529351555076892557014046193670475808134158031321831775744788980460293648</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>El atacante, puede utilizar la propiedad homomórfica. Sea c el primer elemento de $ \texttt{fumar\_encrip\_P} $</p>
+$$ \texttt{c1} := (\texttt{uno} \cdot \texttt{c}) \, mod \, n^2 $$<p>y además sabe que</p>
+$$ \texttt{D\_PAI(private\_key\_p, uno) = 1} $$
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="n">uno</span> <span class="o">*</span> <span class="n">fumar_encrip_P</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> 
+<span class="n">D_PAI</span><span class="p">(</span><span class="n">private_key_P</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>1</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>ergo el primer paciente, no era fumador.</p>
+
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
