@@ -14592,30 +14592,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1>PRIMERA APROXIMACIÓN AL PROBLEMA<h1>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>INTRODUCCIÓN<h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1>PRIMERA APROXIMACIÓN AL PROBLEMA</h1>
+<h2> INTRODUCCIÓN </h2>
 <p>Para ilustrar el ejemplo se utiliza el dataset <a href="https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer">SURVEY LUNG CANCER</a>, cuyas características son:</p>
 <p>Total no. of attributes:16
 No .of instances:284
@@ -14650,18 +14628,7 @@ Lung Cancer: YES , NO.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2> HERRAMIENTAS UTILIZADAS <h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2> HERRAMIENTAS UTILIZADAS </h2>
 <p>La salida es un documento html exportado desde una libreta de Jupyter Notebook. El código está escrito en lenguaje Python3 y la matemática con comandos de $\LaTeX$.</p>
 
 </div>
@@ -14674,18 +14641,7 @@ Lung Cancer: YES , NO.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>CIFRADO HOMOMÓRFICO<h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2> CIFRADO HOMOMÓRFICO </h2>
 <p>El uso de un sistema de cifrado homomórfico está motivado por la obtención de un algoritmo de descifrazo que defina, para una clave privada, un homomorfismo de grupos entre el espacio del mensaje cifrado ($\mathcal{C}$) y el del mensaje sin cifrar ($\mathcal{M}$):</p>
 $$ f: \mathcal{C} \rightarrow \mathcal{M} $$<p>Así, podremos enviar la información cifrada al servicio Cloud, para tratarla encriptada y, posteriormente, traer al local las conclusiones para ser descifradas. Para una primera aproximación tomamos el sistema RSA simplificado.</p>
 <p>La clave pública es un par $(N,e)$ donde $N = p \cdot q$ es producto de dos primos $p$ y $q$ suficientemente grandes y distintos. Por otro lado, $e$ es el llamado exponente de cifrado que es un entero positivo tal que mcd $(e,\phi(N)) = 1$, donde $\phi(N) = (p-1)(q-1)$ es la función $\phi$ de Euler.</p>
@@ -14709,18 +14665,7 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN<h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN</h2>
 <p>En primer lugar vamos a definir dos funciones, una para encriptar un tipo int y otra para desencriptarlo. Los parámetros de entrada para la función que encripta serán:</p>
 <ul>
 <li>publicKey -> Lista que contiene: N, e </li>
@@ -15002,19 +14947,8 @@ De un total de 309 pacientes.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>LIMITACIONES<h3>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>El proceso que se acaba de describir es inútil desde el punto de vista de la seguridad. Al ser un proceso determinista, es decir, los pacientes fumadores y no fumadores se cifran siempre de la misma manera, no podemos presuponer que alguien que quiera hacer un uso fraudulento de la información desconoce los elementos involucrados en el algoritmo (<em>principio de Kerckhoffs</em>).</p>
+<h2>LIMITACIONES</h2>
+El proceso que se acaba de describir es inútil desde el punto de vista de la seguridad. Al ser un proceso determinista, es decir, los pacientes fumadores y no fumadores se cifran siempre de la misma manera, no podemos presuponer que alguien que quiera hacer un uso fraudulento de la información desconoce los elementos involucrados en el algoritmo (*principio de Kerckhoffs*).
 <p>Esto se puede traducir en que, en el peor caso, con un par de evaluaciones obtenemos si un paciente es o no fumador:</p>
 
 </div>
@@ -15084,18 +15018,7 @@ Representa: No es fumador
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1>MEJORANDO EL SISTEMA<h1>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>MEJORANDO EL SISTEMA</h2>
 <p>Un algoritmo de cifrado que es homomórfico y CPA seguro es el de Paillier. Se dice que un procedimiento es CPA seguro si en tiempo polinómico un atacante no puede distinguir entre dos criptotextos partiendo de dos textos sin cifrar elegidos por él.</p>
 
 </div>
@@ -15129,18 +15052,7 @@ $$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n \ta
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN<h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>APLICACIÓN AL DATASET DEL CÁNCER DE PULMÓN</h2>
 <p>Importamos la función $ \texttt{getprimeover(N)} $ la cual retorna un primo de N-bits usando GMP o, si no está accesible, PyCrypto; que son librerías criptográficas de Python. Además, importamos $ \texttt{random} $ para hallar $r \in (\mathbb{Z}_{n^2})^* $</p>
 
 </div>
@@ -15748,18 +15660,7 @@ Hay un total de 309 pacientes, de los cuales 162 son hombres, y 147 son mujeres.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2> SEGURIDAD <h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2> SEGURIDAD </h2>
 <p>Si reproducimos el ataque que hicimos para RSA encontramos una diferencia sustancial: <strong>dos textos claros no siempre tienen el mismo criptotexto</strong>. En efecto:</p>
 
 </div>
@@ -15791,18 +15692,7 @@ Hay un total de 309 pacientes, de los cuales 162 son hombres, y 147 son mujeres.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2>LIMITACIONES<h2>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2>LIMITACIONES</h2>
 <p>Podría parecer que hemos resuelto el problema. Pero nada más lejos de la realidad. Hemos impuesto que nuestro sistema de cifrado, además de homórfico, sea CPA seguro. Pero se conocen formas de atacar a estos sistemas permitiendo conocer, en nuestro caso, si un paciente en concreto es o no fumador. Este tipo de ataques se conocen como ataques CCA. Como en el caso CPA se elegirán dos mensajes, y uno de ellos (al azar) es cifrado, y el criptotexto es entregado al atacante que intenta descifrar a cuál corresponde. Además, el atacante puede adaptar el ataque según las respuesta que obtenga. Veamos que ocurre con nuestro ejemplo:</p>
 
 </div>
@@ -15910,7 +15800,28 @@ $$ \texttt{D\_PAI(private\_key\_p, uno) = 1} $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2> OTROS SISTEMAS HOMOMÓRFICOS </h2>
+Hemos estudiado dos casos de sistemas de encriptación con la propiedad de ser homomórficos. En una primera aproximación, nos encontramos un tipo de brecha de seguridad debido a la cual un atacante experto puede descifrar como almacenamos la información; posteriormente tratamos de solucionar esta situación introduciendo un sistema de cifrado que, además de homomórfico, impone la condición de que dos textos claros corresponden a dos criptotextos diferentes, pero de nuevo hemos encontrado una brecha de seguridad. Existen otros sistemas de cifrado como El Gamal, que son homomórficos y CPA seguros [David Wagner, Lecture 19, 2006, Berkeley]. No obstante, la maleabilidad deja de nuevo patente que no podemos confiar en este sistema.
+<p>Otra brecha de seguridad que no hemos comentado hasta ahora sería la de utilizar una misma clave sobre los datos que han de ser tratados. Además, si tenemos un dataset realista, la cantidad de datos cifrada sería enorme lo cual generaría un campo de prueba y error inasumible. Desde este punto de vista, sería necesario encontrar sistemas que permitan minimizar la información cifrada con la una sola clave. Por ejemplo, haciendo un análisis previo, que permita saber que datos se cruzaran para cifrar el dataset por bloques con diferentes claves.</p>
+<h2> Estado del arte </h2>
+<p>Este problema se remonta a 1978 cuando Rivest, Adleman y Dertouzos [Rivest, Adleman &amp; Dertouzos, 1978,  On data banks and privacy homomorphisms. Foundations of secure computation, 169-180.] propusieron el problema de la existencia de un sistema de cifrado <strong>completamente homomórfico</strong>. Un sistema de cifrado completamente homomórfico soporta tanto la suma como el producto preservando así la estructura en anillo de los textos origen.</p>
+<p>Si este tipo sistema existiera permitiría la construcción de programas que trabajen con datos cifrados cuya salida esté también cifrada salvando todas las brechas que hemos comentado anteriormente. Como estos programas no descifran los datos se pueden ejecutar en la empresa Cloud.</p>
+<p>Pese a sus bondades, no está claro si el cifrado completamente homomórfico será posible en la práctica. Una de las mejores aproximaciones que existen en la actualidad es el sistema criptográfico Boneh-Goh-Nissim, que permitía la evaluación de un número ilimitado de operaciones de suma, pero a lo sumo una multiplicación.</p>
+<p>También existe un estudio hecho por Craig Gentry hecho mientras acababa su tesis en Stanford y trabajaba en IBM (2009). Gentry propone el primer sistema de cifrado completamente homomórfico usando la teoría de retículos. Este sistema es CPA seguro y eficiente pues sus algoritmos son de tiempo polinómico. No obstante, aún queda pendiente conseguir una versión más eficiente para que pueda ser aplicada en la práctica.</p>
+<p>En la práctica se utilizan sistemas <em>algo homomórficos</em>, es decir, se pueden calcular muchas sumas, pero sólo un pequeño número de multiplicaciones.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3>BIBLIOGRAFÍA</h3>
+<p>Rivest, R. L., Adleman, L., &amp; Dertouzos, M. L. (1978). On data banks and privacy homomorphisms. Foundations of secure computation, 4(11), 169-180.</p>
 <p>González Vasco, M. I. (2003). Criptosistemas basados en Teoría de grupos.</p>
 <p>Milanov, E. (2009). The RSA algorithm. RSA laboratories, 1-11.</p>
 <p>Pardo, J. L. G. (2012). Cifrado homomórfico: ejemplos y aplicaciones. Gaceta de la Real Sociedad Matematica Española, 15(4), 697-712.</p>
